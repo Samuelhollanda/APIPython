@@ -14,12 +14,14 @@ database=os.getenv("DATABASE")
 cursor = conn.cursor()
 id_titulo = int(input("Informe o ID do título: "))
 nova_situacao = input("Informe a nova situação (ex: Pago, Cancelado, Pendente): ")
+novo_valor = float(input("Informe o novo valor do Título: "))
 sql_update = """
 UPDATE TB_TITULOS
 SET SituacaoTitulo = %s
+valortitulo = %s
 WHERE IDTitulo = %s
 """
-cursor.execute(sql_update, (nova_situacao, id_titulo))
+cursor.execute(sql_update, (nova_situacao, novo_valor, id_titulo))
 conn.commit()
 sql = "SELECT * FROM LOG_TITULO WHERE IDTitulo = %s"
 cursor.execute(sql, (id_titulo,))
