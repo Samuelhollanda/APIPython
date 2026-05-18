@@ -13,7 +13,6 @@ conn = mysql.connector.connect(
 
 cursor = conn.cursor()
 
-# Coleta de dados do usuário
 id_titulo = int(input("Informe o ID do título: "))
 nova_situacao = input("Informe a nova situação (ex: Pago, Cancelado, Pendente): ")
 novo_valor = float(input("Informe o novo valor do Título: "))
