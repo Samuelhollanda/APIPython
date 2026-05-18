@@ -1,14 +1,18 @@
 import pandas as pd
 import mysql.connector
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 df = pd.read_excel('titulos.xlsx')
 df.columns = df.columns.str.strip().str.lower()
 
 conn = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='#kzp32Mk',  # minha senha do MySQL
-    database='db_importDados'  # meu banco de dados
+    host=os.getenv('HOST'),
+    user=os.getenv('USER'),
+    password=os.getenv('PASSWORD'),
+    database=os.getenv('DATABASE')
 )
 
 cursor = conn.cursor()
